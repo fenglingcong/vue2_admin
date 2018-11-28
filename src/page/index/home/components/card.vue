@@ -1,15 +1,106 @@
 <template>
-  <div>{{msg}}</div>
+  <div id="card">
+    <el-row :gutter="32" class="count">
+      <el-col class="count-item" :xs="24" :sm="12" :lg="6" v-for="(item, index) in list" :key="index">
+        <div class="item-container" :class="`item-container-${index + 1}`">
+          <div class="icon">
+            <i :class="item.icon"></i>
+          </div>
+          <div class="text">
+            <div class="title">{{item.title}}</div>
+            <vue-num-to class="number" :startVal="0" :endVal="item.endVal" :duration="5000"></vue-num-to>
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      msg: 'card card card'
+      list: [
+        {
+          icon: 'el-icon-my-paperplane',
+          title: 'Page View',
+          endVal: 182735
+        },
+        {
+          icon: 'el-icon-my-users',
+          title: 'Unique Visitor',
+          endVal: 7428
+        },
+        {
+          icon: 'el-icon-my-news',
+          title: 'Message',
+          endVal: 2839
+        },
+        {
+          icon: 'el-icon-my-qq',
+          title: 'QQ group',
+          endVal: 338241465
+        }
+      ]
     }
   }
 }
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+color1 = #55c8ca
+color2 = #f7b87f
+color3 = #36a3f7
+color4 = #34bfa3
+#card{
+  .count{
+    padding: 20px;
+    margin-bottom: 32px;
+    user-select: none;
+  }
+  .count-item{
+    .item-container{
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f4f5f6;
+      border-radius: 6px;
+      cursor: pointer;
+      &:hover{
+        opacity: 0.8;
+      }
+      &.item-container-1{
+        background-color: color1;
+      }
+      &.item-container-2{
+        background-color: color2;
+      }
+      &.item-container-3{
+        background-color: color3;
+      }
+      &.item-container-4{
+        background-color: color4;
+      }
+      .icon{
+        padding: 16px;
+        i{
+          font-size: 48px;
+          color: #fff;
+        }
+      }
+      .text{
+        text-align: right;
+        color: #fff;
+        .title{
+          margin-bottom: 12px;
+          font-size: 16px;
+        }
+        .number{
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+</style>

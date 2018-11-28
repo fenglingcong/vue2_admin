@@ -17,6 +17,7 @@
     "mockjs": "^1.0.1-beta3",
     "qs": "^6.5.2",
     "vue": "^2.5.2",
+    "vue-clipboard-pack": "^1.0.4",
     "vue-i18n": "^8.3.2",
     "vue-num-to": "^1.0.2",
     "vue-router": "^3.0.1",

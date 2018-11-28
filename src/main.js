@@ -26,6 +26,8 @@ import '@/mock'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import i18n from '@/language'
+import vueNumTo from 'vue-num-to'
+import vueClipboard from 'vue-clipboard-pack'
 
 Vue.config.productionTip = false
 
@@ -41,6 +43,8 @@ Vue.use(ElementUI, {
     i18n.t(key, value)
   }
 })
+Vue.use(vueClipboard)
+Vue.use(vueNumTo)
 
 /* eslint-disable no-new */
 new Vue({
