@@ -1,6 +1,5 @@
 <template>
   <div>
-    我是{{msg}}页
     <router-view></router-view>
   </div>
 </template>

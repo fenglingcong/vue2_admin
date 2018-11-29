@@ -1,18 +1,18 @@
 <template>
-  <el-main>
-    {{msg}}
+  <el-main id="page">
     <router-view></router-view>
   </el-main>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'page page'
-    }
-  }
+  name: 'page'
 }
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+#page{
+  height: fit-content;
+  overflow: auto;
+}
+</style>

@@ -15,6 +15,7 @@ import '@/permission'
 
 // 自定义
 import menuItem from '@/layout/menuItem'
+import sticky from '@/components/sticky'
 
 // 过滤
 import filters from '@/filters'
@@ -32,6 +33,7 @@ import vueClipboard from 'vue-clipboard-pack'
 Vue.config.productionTip = false
 
 Vue.component('my-menu-item', menuItem)
+Vue.component('my-sticky', sticky)
 
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])

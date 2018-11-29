@@ -55,10 +55,10 @@ color4 = #34bfa3
 #card{
   .count{
     padding: 20px;
-    margin-bottom: 32px;
     user-select: none;
   }
   .count-item{
+    margin-bottom: 32px;
     .item-container{
       padding: 16px 20px;
       display: flex;

@@ -7,6 +7,10 @@
       <el-col :xs="24" :sm="12" :lg="6"><my-todo></my-todo></el-col>
       <el-col :xs="24" :sm="12" :lg="6"><my-self></my-self></el-col>
     </el-row>
+    <a href="https://github.com/fenglingcong/vue2_admin" class="github" target="_blank">
+      <div class="bg"></div>
+      <i class="el-icon-my-github"></i>
+    </a>
   </div>
 </template>
 
@@ -23,13 +27,37 @@ export default {
     myTable,
     myTodo,
     mySelf
-  },
-  data () {
-    return {
-      msg: 'home home home'
-    }
   }
 }
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+#home{
+  padding: 10px 30px 20px 0;
+}
+.github{
+  position: absolute;
+  top: 80px;
+  right: 0;
+  z-index: 99;
+  width: 80px;
+  height: 80px;
+  &:hover .bg{
+    border-top-color: #f56c6c;
+  }
+  .bg{
+    width: 0;
+    height: 0;
+    border-right: 80px solid #f4516c;
+    border-bottom: 80px solid rgba(0, 0, 0, 0);
+  }
+  i{
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    transform: rotate(45deg);
+    font-size: 40px;
+    color: #fff;
+  }
+}
+</style>
