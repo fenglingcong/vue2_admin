@@ -13,6 +13,8 @@ export default {
 <style lang="stylus">
 #page{
   height: fit-content;
+  min-height: 100%;
+  background: #fff;
   overflow: auto;
 }
 </style>

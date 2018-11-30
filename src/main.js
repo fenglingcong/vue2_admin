@@ -16,6 +16,7 @@ import '@/permission'
 // 自定义
 import menuItem from '@/layout/menuItem'
 import sticky from '@/components/sticky'
+import loading from '@/components/loading'
 
 // 过滤
 import filters from '@/filters'
@@ -34,6 +35,7 @@ Vue.config.productionTip = false
 
 Vue.component('my-menu-item', menuItem)
 Vue.component('my-sticky', sticky)
+Vue.component('my-loading', loading)
 
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
