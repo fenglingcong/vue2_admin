@@ -28,6 +28,7 @@ import '@/mock'
 import axios from 'axios'
 import ElementUI from 'element-ui'
 import i18n from '@/language'
+import vueProgressBar from 'vue-progressbar'
 import vueNumTo from 'vue-num-to'
 import vueClipboard from 'vue-clipboard-pack'
 
@@ -49,6 +50,11 @@ Vue.use(ElementUI, {
 })
 Vue.use(vueClipboard)
 Vue.use(vueNumTo)
+Vue.use(vueProgressBar, {
+  color: '#29f',
+  failedColor: '#f30',
+  thickness: '2px'
+})
 
 /* eslint-disable no-new */
 new Vue({

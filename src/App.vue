@@ -1,12 +1,42 @@
 <template>
   <div id="app">
     <router-view/>
+    <my-backtop :height="200"></my-backtop>
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 
 <script>
+import backTop from '@/components/backTop'
+import cache from '@/utils/cache'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { 'my-backtop': backTop },
+  methods: {
+    initProgress () {
+      this.$router.beforeEach((to, from, next) => {
+        this.$Progress.start()
+        next()
+      })
+      this.$router.afterEach((to, from) => {
+        this.$Progress.finish()
+      })
+    },
+    initLanguage () {
+      let lang = cache.getSession('language')
+      if (lang) {
+        this.$store.commit('set_langague', lang)
+      }
+    }
+  },
+  created () {
+    this.$Progress.start()
+    this.initProgress()
+    this.initLanguage()
+  },
+  mounted () {
+    this.$Progress.finish()
+  }
 }
 </script>
 
