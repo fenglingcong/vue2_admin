@@ -25,7 +25,7 @@ export default {
     initLanguage () {
       let lang = cache.getSession('language')
       if (lang) {
-        this.$store.commit('set_langague', lang)
+        this.$store.commit('set_language', lang)
       }
     }
   },
