@@ -12,6 +12,7 @@ import '@/assets/css/icon/iconfont.css'
 import '@/assets/css/global.css'
 // js
 import '@/permission'
+import '@/errorLog'
 
 // 自定义
 import menuItem from '@/layout/menuItem'

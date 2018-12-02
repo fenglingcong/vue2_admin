@@ -26,6 +26,7 @@ const mutations = {
   },
   set_logs (state, error) {
     state.logs.push(error)
+    console.log(state.logs)
   },
   loginOut (state) {
     state.user = ''
