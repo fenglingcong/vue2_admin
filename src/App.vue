@@ -65,5 +65,11 @@ export default {
       border: 1px solid appColor;
     }
   }
+  .sortable-choose{
+    background-color: #f0f9eb;
+  }
+  .sortable-ghost{
+    background-color: appColor;
+  }
 }
 </style>

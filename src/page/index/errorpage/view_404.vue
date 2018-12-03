@@ -1,13 +1,14 @@
 <template>
-  <div>我是{{msg}}页</div>
+  <div>
+    <error-page404></error-page404>
+  </div>
 </template>
 
 <script>
+import errorPage404 from '@/page/other/page404.vue'
 export default {
-  data () {
-    return {
-      msg: 'view404'
-    }
+  components: {
+    errorPage404
   }
 }
 </script>

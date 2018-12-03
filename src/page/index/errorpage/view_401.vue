@@ -1,14 +1,13 @@
 <template>
-  <div>我是{{msg}}页</div>
+  <div id="view_401">
+    <error-page401></error-page401>
+  </div>
 </template>
 
 <script>
+import errorPage401 from '@/page/other/page401'
 export default {
-  data () {
-    return {
-      msg: 'view401 401'
-    }
-  }
+  components: { errorPage401 }
 }
 </script>
 
