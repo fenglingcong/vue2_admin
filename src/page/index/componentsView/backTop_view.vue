@@ -5,7 +5,7 @@
     <div class="blank"></div>
     <el-alert :closable="false" type="warning" title="改变样式、高度、位置、监听：大于高度就会显示backTop组件，height: 200px; bottom: 100px; right: 30px;"></el-alert>
     <my-backTop :height="200" :bottom="100" @complete="handleComplete">
-      <el-button type="warning">返回顶部</el-button>
+      <el-button type="warning" round>返回顶部</el-button>
     </my-backTop>
     <div class="blank"></div>
     <div class="blank"></div>

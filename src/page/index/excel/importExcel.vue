@@ -1,15 +1,83 @@
 <template>
-  <div>我是{{msg}}页</div>
+  <div id="importExcel">
+    <div class="importWrapper">
+      <input type="file" id="input" accept=".xlsx, .xls" @change="handleFileChange">
+      <el-button :loading="importLoading" type="primary" @click="handleImport">导入 Excel</el-button>
+    </div>
+    <el-table v-if="tableBody.length > 0" :data="tableBody" style="width: 100%;" border :row-style="{'text-align': 'center'}" :header-cell-style="{'text-algin': 'center'}">
+      <el-table-column v-for="(item, index) in tableHeader" :key="index" :prop="item" :label="item"></el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
+import XLSX from 'xlsx'
 export default {
   data () {
     return {
-      msg: 'importexcel importexcel'
+      tableHeader: [],
+      tableBody: [],
+      importLoading: false
+    }
+  },
+  methods: {
+    handleImport () {
+      document.getElementById('input').click()
+    },
+    handleFileChange (ev) {
+      this.importLoading = true
+      const files = ev.target.files
+      const itemFile = files[0]
+      const reader = new FileReader()
+      reader.onload = e => {
+        const data = e.target.result
+        const fixedData = this.fixdata(data)
+        const workbook = XLSX.read(btoa(fixedData), {type: 'base64'})
+        const firstSheetName = workbook.SheetNames[0]
+        const worksheet = workbook.Sheets[firstSheetName]
+        const header = this.getHeaderRow(worksheet)
+        const body = XLSX.utils.sheet_to_json(worksheet)
+        this.generateDate(header, body)
+      }
+      reader.readAsArrayBuffer(itemFile)
+    },
+    fixdata (data) {
+      let o = ''
+      let l = 0
+      const w = 10240
+      for (; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)))
+      o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)))
+      return o
+    },
+    getHeaderRow (sheet) {
+      const headers = []
+      const range = XLSX.utils.decode_range(sheet['!ref'])
+      let C
+      const R = range.s.r /* start in the first row */
+      for (C = range.s.c; C <= range.e.c; ++C) { /* walk every column in the range */
+        var cell = sheet[XLSX.utils.encode_cell({ c: C, r: R })] /* find the cell in the first row */
+        var hdr = 'UNKNOWN ' + C // <-- replace with your desired default
+        if (cell && cell.t) hdr = XLSX.utils.format_cell(cell)
+        headers.push(hdr)
+      }
+      return headers
+    },
+    generateDate (header, body) {
+      this.tableHeader = header
+      this.tableBody = body
+      this.importLoading = false
     }
   }
 }
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+#importExcel{
+  #input{
+    display: none;
+  }
+  .importWrapper{
+    margin-bottom: 20px;
+  }
+}
+</style>

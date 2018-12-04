@@ -11,7 +11,6 @@ router.beforeEach((to, from, next) => {
         next('/')
       } else {
         // 是否有用户信息
-        console.log(store.state)
         if (store.state.user) {
           assessPermission(store.state.user.role, to.meta.role, next)
         } else {
